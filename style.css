@@ -20,6 +20,17 @@ body {
     width: 100%;
 }
 
-#start, #status {
+#start, #status, #restart {
     font-size: 22px;
+}
+
+.copy_right_footer {
+    color: #6c757d;
+    bottom: 0;
+    width: 100%;
+    font-size: 20px;
+    background-color: white;
+    line-height: 3;
+    text-align: center;
+    text-shadow: 5px 5px 5px rgb(151, 149, 149);
 }
