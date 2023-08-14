@@ -21,7 +21,12 @@ var ball = {
 rightWristX = 0;
 rightWristY = 0;
 scoreRightWrist = 0;
+game_status = "";
 
+function startgame() {
+  game_status = "start";
+  document.getElementById("status").innerHTML = "Game is Loaded!";
+}
 function setup(){
   canvas = createCanvas(700,600);
   canvas.parent('canvas');
@@ -51,6 +56,9 @@ function draw(){
     fill(rgb(255, 0, 0));
     stroke(rgb(255, 0, 0));
     circle(rightWristX, rightWristY, 30);
+  }
+
+  if(game_status=="start") { 
   }
  background(0); 
 
