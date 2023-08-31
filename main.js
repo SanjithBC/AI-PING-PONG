@@ -18,6 +18,11 @@ var ball = {
     dy:3
 }
 
+function preload() {
+  ball_touch_paddel = loadSound("ball_touch_paddel.wav");
+  missed = loadSound("missed.wav");
+}
+
 rightWristX = 0;
 rightWristY = 0;
 scoreRightWrist = 0;
@@ -77,7 +82,7 @@ function draw(){
    fill(250,0,0);
     stroke(0,0,250);
     strokeWeight(0.5);
-   paddle1Y = mouseY; 
+   paddle1Y = rightWristY; 
    rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
    
    
@@ -150,11 +155,13 @@ function move(){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
     ball.dx = -ball.dx+0.5;
     playerscore++;
+    ball_touch_paddel.play()
   }
   else{
     pcscore++;
     reset();
     navigator.vibrate(100);
+    missed.play();
   }
 }
 if(pcscore ==4){
@@ -165,13 +172,19 @@ if(pcscore ==4){
     stroke("white");
     textSize(25)
     text("Game Over!☹☹",width/2,height/2);
-    text("Reload The Page!",width/2,height/2+30)
+    text("Press Restart button to play again!",width/2,height/2+30)
     noLoop();
     pcscore = 0;
 }
    if(ball.y+ball.r > height || ball.y-ball.r <0){
        ball.dy =- ball.dy;
    }   
+}
+
+function restart() {
+  pcscore = 0;
+  playerscore = 0;
+  restart.loop();
 }
 
 
